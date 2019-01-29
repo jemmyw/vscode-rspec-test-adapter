@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
 import { TestAdapter, TestLoadStartedEvent, TestLoadFinishedEvent, TestRunStartedEvent, TestRunFinishedEvent, TestSuiteEvent, TestEvent } from 'vscode-test-adapter-api';
 import { Log } from 'vscode-test-adapter-util';
-import { loadFakeTests, runFakeTests } from './fakeTests';
+import { loadSpecs, runFakeTests } from './fakeTests';
 
 /**
  * This class is intended as a starting point for implementing a "real" TestAdapter.
  * The file `README.md` contains further instructions.
  */
-export class ExampleAdapter implements TestAdapter {
+export class RspecAdapter implements TestAdapter {
 
 	private disposables: { dispose(): void }[] = [];
 
@@ -24,7 +24,7 @@ export class ExampleAdapter implements TestAdapter {
 		private readonly log: Log
 	) {
 
-		this.log.info('Initializing example adapter');
+		this.log.info('Initializing rspec adapter');
 
 		this.disposables.push(this.testsEmitter);
 		this.disposables.push(this.testStatesEmitter);
@@ -34,11 +34,11 @@ export class ExampleAdapter implements TestAdapter {
 
 	async load(): Promise<void> {
 
-		this.log.info('Loading example tests');
+		this.log.info('Loading rspec tests');
 
 		this.testsEmitter.fire(<TestLoadStartedEvent>{ type: 'started' });
 
-		const loadedTests = await loadFakeTests();
+		const loadedTests = await loadSpecs();
 
 		this.testsEmitter.fire(<TestLoadFinishedEvent>{ type: 'finished', suite: loadedTests });
 
@@ -46,7 +46,7 @@ export class ExampleAdapter implements TestAdapter {
 
 	async run(tests: string[]): Promise<void> {
 
-		this.log.info(`Running example tests ${JSON.stringify(tests)}`);
+		this.log.info(`Running rspec tests ${JSON.stringify(tests)}`);
 
 		this.testStatesEmitter.fire(<TestRunStartedEvent>{ type: 'started', tests });
 

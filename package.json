@@ -1,19 +1,19 @@
 {
-  "name": "vscode-example-test-adapter",
-  "displayName": "Example Test Explorer",
-  "description": "Run your Example tests in the Sidebar of Visual Studio Code",
+  "name": "vscode-rspec-test-adapter",
+  "displayName": "Ruby Rspec Test Explorer",
+  "description": "Run your Rspec tests in the Sidebar of Visual Studio Code",
   "icon": "img/icon.png",
-  "author": "Holger Benl <hbenl@evandor.de>",
-  "publisher": "hbenl",
+  "author": "Jeremy Wells <jemmyw@gmail.com>",
+  "publisher": "jemmyw",
   "version": "0.0.1",
   "license": "MIT",
-  "homepage": "https://github.com/hbenl/vscode-example-test-adapter",
+  "homepage": "https://github.com/jemmyw/vscode-rspec-test-adapter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hbenl/vscode-example-test-adapter.git"
+    "url": "https://github.com/jemmyw/vscode-rspec-test-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/hbenl/vscode-example-test-adapter/issues"
+    "url": "https://github.com/jemmyw/vscode-rspec-test-adapter/issues"
   },
   "categories": [
     "Other"
@@ -33,6 +33,7 @@
     "publish": "vsce publish"
   },
   "dependencies": {
+    "iconv-lite": "^0.4.24",
     "tslib": "^1.9.3",
     "vscode-test-adapter-api": "^1.0.1",
     "vscode-test-adapter-util": "^0.5.0"
@@ -54,14 +55,14 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Example Test Explorer configuration",
+      "title": "Rspec Test Explorer configuration",
       "properties": {
-        "exampleExplorer.logpanel": {
+        "rspecExplorer.logpanel": {
           "description": "write diagnotic logs to an output panel",
           "type": "boolean",
           "scope": "resource"
         },
-        "exampleExplorer.logfile": {
+        "rspecExplorer.logfile": {
           "description": "write diagnostic logs to the given file",
           "type": "string",
           "scope": "resource"
